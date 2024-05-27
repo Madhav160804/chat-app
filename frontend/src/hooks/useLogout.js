@@ -19,7 +19,7 @@ const useLogout = () => {
             const data = await res.json();
             if(data.error){
                 throw new Error(data.error);
-            }
+            } 
 
             // localstorage
             localStorage.removeItem('chat-user');

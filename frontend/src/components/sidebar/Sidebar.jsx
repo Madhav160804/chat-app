@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SearchInput from './SearchInput'
 import Conversations from './Conversations'
 import LogoutButton from './LogoutButton'
 
-function Sidebar() {
+const Sidebar = ({selectedUser,setSelectedUser}) => {
+
+  const [query, setQuery] = useState("");
 
   return <div className='border-r border-slate-500 p-4 flex flex-col'>
-    <SearchInput />
+    <SearchInput setQuery={setQuery}/>
     <div className='divider px-3'></div>
-      <Conversations />
+      <Conversations query={query} selectedUser={selectedUser} setSelectedUser={setSelectedUser} />
       <LogoutButton />
     </div>
 }

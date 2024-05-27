@@ -1,13 +1,23 @@
 import Conversation from "./Conversation"
 import useConversations from '../../hooks/useConversations'
+import { getRandomEmoji } from "../../../utils/emoji";
 
-const Conversations =  () => {
+  const Conversations =  ({query,selectedUser,setSelectedUser}) => {
 
-  const { users } = useConversations();
-  
+  const { loading, users } = useConversations(query);
+
   return <div className='py-2 flex flex-col overflow-auto'>
-        {users.map( ({fullName,profilePic},index) => {return <Conversation key={index} 
-        fullName={fullName} profilePic={profilePic} />})}
+        {loading ? <span className='loading loading-spinner'></span> : null}
+        {users.map( 
+          (user) => {
+            return <Conversation 
+            key={user._id} 
+            user={user}
+            emoji={getRandomEmoji()}
+            selectedUser={selectedUser}
+            setSelectedUser={setSelectedUser}
+            />
+          })}
     </div>
 }
 
