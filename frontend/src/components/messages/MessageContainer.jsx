@@ -2,9 +2,11 @@ import MessageInput from "./MessageInput"
 import Messages from "./Messages"
 import { TiMessages } from "react-icons/ti";
 import { useAuthContext } from "../../context/AuthContext";
+import { useEffect, useState } from "react";
 
 const MessageContainer = ({selectedUser}) => {
   const noChatSelected = (selectedUser.userId==='beef');
+  const [messages,setMessages] = useState([]);
   return (
     <div className="md:min-w-[450px] flex flex-col">
         {noChatSelected ? (
@@ -16,8 +18,8 @@ const MessageContainer = ({selectedUser}) => {
                     <span className='label-text'>To:</span>
                     <span className="text-gray-900 font-bold">{selectedUser.fullName}</span>
                 </div>
-                <Messages selectedUser={selectedUser}/>
-                <MessageInput selectedUser={selectedUser}/>
+                <Messages selectedUser={selectedUser} messages={messages} setMessages={setMessages}/>
+                <MessageInput selectedUser={selectedUser} setMessages={setMessages}/>   
             </>
         )}
     </div>

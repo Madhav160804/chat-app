@@ -1,15 +1,21 @@
 import React from 'react'
+import { useAuthContext } from '../../context/AuthContext'
+import formatDate from '../../../utils/dateFormat';
 
-const Message = () => {
+const Message = ({message,selectedUser}) => {
+  const { authUser } = useAuthContext();
+  const isSender = (message.senderId==authUser._id);
+  const bgColor = isSender ? 'bg-blue-500' : '';
+  const profilePic = isSender ? authUser.profilePic : selectedUser.profilePic ;
   return (
-    <div className='chat chat-end'>
+    <div className={`chat ${isSender ? 'chat-end':'chat-start'}`}>
       <div className='chat-image avatar'>
         <div className='w-10 rounded-full'>
-            <img src="https://cdn4.iconfinder.com/data/icons/office-thick-outline/36/office-14-512.png" alt="Tailwind CSS Chat bubble component" />
+            <img src={profilePic} alt="Tailwind CSS Chat bubble component" />
         </div>
       </div>
-      <div className='chat-bubble text-white bg-blue-500'>hi! What is UP?</div>
-      <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>12:41</div>
+      <div className={`chat-bubble text-white ${bgColor} `} >{message.message}</div>
+      <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formatDate(message.createdAt)}</div>
     </div>
   )
 }

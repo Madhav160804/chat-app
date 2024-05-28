@@ -6,7 +6,8 @@ const Conversation = ({user,emoji,selectedUser,setSelectedUser}) => {
   const conversationClickHandler = () => {
     setSelectedUser({
         fullName: user.fullName,
-        userId: user._id
+        userId: user._id,
+        profilePic: user.profilePic
     })
   }
 

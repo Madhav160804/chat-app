@@ -26,8 +26,8 @@ const useConversation = (query) => {
             }
         
         }
-        
         getConversations();
+        
     },[query] );
     return { loading,users };
     // users are the users of the conversations
