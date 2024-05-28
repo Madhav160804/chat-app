@@ -21,24 +21,22 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: npm install and build frontend
+      - name: npm install, build, and test
         run: |
           cd frontend
           npm install
-          npm run build
           cd ../backend
           npm install
+          
 
-      - name: Run backend server
-        run: |
-          cd backend
-          node server.js &
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: ./backend
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -47,7 +45,7 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write # This is required for requesting the JWT
+      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
@@ -55,9 +53,21 @@ jobs:
         with:
           name: node-app
 
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_9ED04C7155AA4462847FB4EE93B95F84 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5508AB8EF1A2480A871A84C424FC6C8D }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6702FD6409DE48E5AB3DDD4D0DBCEFA8 }}
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'nitkonnect'
+          slot-name: 'Production'
           package: .
+          
