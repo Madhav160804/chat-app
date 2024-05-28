@@ -18,21 +18,21 @@ This project is a feature-rich chat application designed to facilitate seamless 
 ## Technologies Used
 
 ### Frontend
-- **React:** A JavaScript library for building user interfaces.
-- **Vite:** A fast build tool and development server for modern web projects.
+- **React:** <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" width="20"/>
+- **Vite:** <img src="https://vitejs.dev/logo.svg" alt="Vite" width="20"/>
 
 ### Backend
-- **Node.js:** A JavaScript runtime built on Chrome's V8 JavaScript engine.
-- **Express:** A minimal and flexible Node.js web application framework.
+- **Node.js:** <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js" width="20"/>
+- **Express:** <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" alt="Express" width="50"/>
 
 ### Real-Time Communication
-- **Socket.io:** Enables real-time, bidirectional communication between web clients and servers.
+- **Socket.io:** <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg" alt="Socket.io" width="20"/>
 
 ### Database
-- **Mongoose:** An ODM (Object Data Modeling) library for MongoDB and Node.js.
+- **MongoDB:** <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" alt="MongoDB" width="50"/>
 
 ### Authentication
-- **JWT (JSON Web Tokens):** For secure user authentication and authorization.
+- **JWT (JSON Web Tokens):** <img src="https://jwt.io/img/pic_logo.svg" alt="JWT" width="20"/>
 
 ## Setup and Installation
 
