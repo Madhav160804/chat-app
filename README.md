@@ -86,7 +86,7 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 
 
-###Future planned features and improvements:-
+### Future planned features and improvements:-
 
 - [ ] Add firebase authentication to verify email
 - [ ] Send attachments in a message
