@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a feature-rich chat application designed to facilitate seamless real-time communication between users. Built with modern web technologies, the application provides a robust and user-friendly platform for chatting, user management, and status updates.
+This project is a feature-rich chat application designed to facilitate seamless real-time communication between users. Built with modern web technologies, the application provides a robust and user-friendly platform for chatting, user management, and status updates which can be accessed [here](https://chat-app-6ys7.onrender.com/).
 
 ## Features
 
