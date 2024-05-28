@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from 'react'
 import Message from './Message'
 import useGetMessages from '../../hooks/useGetMessages'
 import MessageSkeleton from '../skeletons/MessageSkeleton'
+import { useSocketContext } from '../../context/SocketContext'
 
 const Messages = ({selectedUser,messages,setMessages}) => {
   const { loading } = useGetMessages(selectedUser,setMessages);
+  const { newMessage } = useSocketContext();
   const lastMessageRef = useRef(null);
 
   useEffect(() => {
@@ -12,6 +14,12 @@ const Messages = ({selectedUser,messages,setMessages}) => {
 			lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
 		}, 100);
 	}, [messages]);
+
+  useEffect(() => {
+    if (newMessage?.senderId === selectedUser.userId) {
+      setMessages(prev => [...prev, newMessage]);
+    }
+  }, [newMessage]);
 
   return (
     <div className='px-4 flex-1 overflow-auto'>

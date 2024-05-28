@@ -19,7 +19,6 @@ const useSendMessage = (selectedUser) => {
                 'Content-Type': 'application/json',
             });
             setMessages(prev=>[...prev,res.data]);
-            // console.log(res.data)
 
 
         } catch (error) {

@@ -16,7 +16,6 @@ const useGetMessages = (selectedUser,setMessages) => {
                 if(res.data.error) {
                     throw new Error(res.data.error);
                 }     
-                console.log(res.data);
                 setMessages(res.data);
             } catch (error) {
                 toast.error(error.message);

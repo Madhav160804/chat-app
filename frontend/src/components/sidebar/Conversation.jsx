@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import { useSocketContext } from '../../context/SocketContext';
 
 const Conversation = ({user,emoji,selectedUser,setSelectedUser}) => {
 
   const selected = (selectedUser.userId===user._id);
+  const {onlineUsers} = useSocketContext();
+  const isOnline = onlineUsers.includes(user._id);
+
   const conversationClickHandler = () => {
     setSelectedUser({
         fullName: user.fullName,
@@ -13,7 +17,7 @@ const Conversation = ({user,emoji,selectedUser,setSelectedUser}) => {
 
   return <>
     <div className={`flex gap-2 items-center ${selected ? 'bg-blue-600' : 'hover:bg-sky-500'}  rounded p-2 py-1 cursor-pointer`} onClick={conversationClickHandler}>
-        <div className='avatar online'>
+        <div className={`avatar ${isOnline ? "online":''}`}>
             <div className='w-12 rounded-full'>
                 <img src={user.profilePic} alt="user avatar" />
             </div>
