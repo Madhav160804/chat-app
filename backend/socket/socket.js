@@ -3,7 +3,6 @@ import http from 'http'
 import express from 'express'
 
 const app = express()
-console.log(app)
 
 const server = http.createServer(app)
 const io = new Server(server,{
